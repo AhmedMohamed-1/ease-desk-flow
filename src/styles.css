@@ -141,6 +141,10 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+  --status-new: oklch(0.7 0.13 255);
+  --status-active: oklch(0.72 0.11 200);
+  --status-hold: oklch(0.76 0.13 65);
+  --status-done: oklch(0.7 0.12 155);
 }
 
 @layer base {
@@ -149,6 +153,7 @@
   }
 
   body {
+    font-family: var(--font-sans);
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
