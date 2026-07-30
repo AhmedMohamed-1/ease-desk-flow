@@ -88,7 +88,9 @@ function TicketDetail() {
     },
   });
 
-  async function update(patch: Record<string, unknown>, message: string) {
+  type TicketPatch = { status?: TicketStatus; assignee_id?: string | null };
+
+  async function update(patch: TicketPatch, message: string) {
     const { error } = await supabase.from("tickets").update(patch).eq("id", ticketId);
     if (error) {
       toast.error(error.message);
@@ -181,7 +183,7 @@ function TicketDetail() {
                       update(
                         {
                           assignee_id: v === "unassigned" ? null : v,
-                          ...(v !== "unassigned" && status === "new" ? { status: "assigned" } : {}),
+                          ...(v !== "unassigned" && status === "new" ? { status: "assigned" as TicketStatus } : {}),
                         },
                         "Assignee updated",
                       )
@@ -208,7 +210,7 @@ function TicketDetail() {
                         update(
                           {
                             assignee_id: user.id,
-                            ...(status === "new" ? { status: "assigned" } : {}),
+                            ...(status === "new" ? { status: "assigned" as TicketStatus } : {}),
                           },
                           "Ticket assigned to you",
                         )
@@ -223,7 +225,7 @@ function TicketDetail() {
                   <Label>Status</Label>
                   <Select
                     value={status}
-                    onValueChange={(v) => update({ status: v }, `Status set to ${STATUS_LABELS[v as TicketStatus]}`)}
+                    onValueChange={(v) => update({ status: v as TicketStatus }, `Status set to ${STATUS_LABELS[v as TicketStatus]}`)}
                   >
                     <SelectTrigger>
                       <SelectValue />
