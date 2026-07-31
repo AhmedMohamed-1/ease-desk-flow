@@ -15,7 +15,9 @@ export function AppHeader({ roles, email }: { roles: Role[]; email?: string }) {
   const links = [
     { to: "/dashboard", label: "Tickets" },
     ...(isStaff(roles) ? [{ to: "/insights", label: "Insights" }] : []),
+    ...(roles.includes("manager") ? [{ to: "/team", label: "People" }] : []),
   ];
+
 
   async function signOut() {
     await queryClient.cancelQueries();
