@@ -35,7 +35,7 @@ const schema = z.object({
   title: z.string().trim().min(5, "Give a short summary (at least 5 characters)").max(120),
   description: z.string().trim().min(15, "Describe the issue in at least 15 characters").max(4000),
   category: z.enum(["hardware", "software", "network", "access", "facilities", "other"]),
-  priority: z.enum(["low", "medium", "high", "urgent"]),
+  priority: z.enum(["low", "medium", "high"]),
 });
 
 function NewTicket() {
