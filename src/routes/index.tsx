@@ -72,7 +72,7 @@ const fields = [
   { label: "Title", note: "Required · short summary, 5–120 characters" },
   { label: "Description", note: "Required · what happened and what was tried" },
   { label: "Category", note: "Required · Hardware, Software, Network, Access, Facilities, Other" },
-  { label: "Priority", note: "Required · Low, Medium, High, Urgent (drives the SLA)" },
+  { label: "Priority", note: "Required · Low, Medium, High (drives the SLA)" },
   { label: "Submitter & ticket ID", note: "Automatic · captured on submission" },
   { label: "Attachments", note: "Out of scope for v1 — links can be pasted in the description" },
 ];
@@ -193,8 +193,8 @@ function Landing() {
                 ))}
               </ul>
               <p className="mt-4 text-xs text-muted-foreground">
-                Delay thresholds: Urgent 4h, High 8h, Medium 24h, Low 72h from submission while the
-                ticket is still open.
+                Delay thresholds: High 8h, Medium 24h, Low 72h from submission while the ticket is
+                still open.
               </p>
             </div>
           </div>

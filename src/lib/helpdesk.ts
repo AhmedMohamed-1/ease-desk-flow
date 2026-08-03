@@ -6,7 +6,7 @@ export type TicketStatus =
   | "on_hold"
   | "resolved"
   | "closed";
-export type TicketPriority = "low" | "medium" | "high" | "urgent";
+export type TicketPriority = "low" | "medium" | "high";
 export type TicketCategory =
   | "hardware"
   | "software"
@@ -45,12 +45,10 @@ export const PRIORITY_LABELS: Record<TicketPriority, string> = {
   low: "Low",
   medium: "Medium",
   high: "High",
-  urgent: "Urgent",
 };
 
 /** Task 7 — SLA used to flag delayed tickets, in hours. */
 export const PRIORITY_SLA_HOURS: Record<TicketPriority, number> = {
-  urgent: 4,
   high: 8,
   medium: 24,
   low: 72,
@@ -104,8 +102,6 @@ export function statusTone(status: TicketStatus) {
 
 export function priorityTone(priority: TicketPriority) {
   switch (priority) {
-    case "urgent":
-      return "bg-destructive/15 text-destructive border-destructive/30";
     case "high":
       return "bg-status-hold/15 text-status-hold border-status-hold/30";
     case "medium":

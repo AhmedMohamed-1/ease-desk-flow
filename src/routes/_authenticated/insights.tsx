@@ -106,8 +106,7 @@ function Insights() {
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">Workload &amp; visibility</h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Delays are measured against the SLA for each priority: urgent 4h, high 8h, medium 24h,
-          low 72h.
+          Delays are measured against the SLA for each priority: high 8h, medium 24h, low 72h.
         </p>
       </div>
 

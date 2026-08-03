@@ -117,7 +117,7 @@ export type Database = {
         | "access"
         | "facilities"
         | "other"
-      ticket_priority: "low" | "medium" | "high" | "urgent"
+      ticket_priority: "low" | "medium" | "high"
       ticket_status:
         | "new"
         | "assigned"
@@ -261,7 +261,7 @@ export const Constants = {
         "facilities",
         "other",
       ],
-      ticket_priority: ["low", "medium", "high", "urgent"],
+      ticket_priority: ["low", "medium", "high"],
       ticket_status: [
         "new",
         "assigned",
