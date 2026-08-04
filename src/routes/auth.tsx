@@ -71,6 +71,20 @@ function AuthPage() {
     navigate({ to: "/dashboard" });
   }
 
+  async function firebaseGoogle() {
+    setBusy(true);
+    try {
+      const { signInWithFirebaseGoogle } = await import("@/lib/firebase");
+      const user = await signInWithFirebaseGoogle();
+      toast.success(`Firebase: signed in as ${user.email ?? user.uid}`);
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Firebase sign-in failed");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-secondary/40 px-4 py-12">
       <div className="w-full max-w-md space-y-6">
@@ -136,6 +150,18 @@ function AuthPage() {
             <Button variant="outline" className="w-full" onClick={google}>
               Continue with Google
             </Button>
+            <Button
+              variant="ghost"
+              className="mt-2 w-full"
+              disabled={busy}
+              onClick={firebaseGoogle}
+            >
+              Continue with Google (Firebase)
+            </Button>
+            <p className="mt-2 text-xs text-muted-foreground">
+              Firebase sign-in is a separate identity provider — it does not grant access to
+              tickets or roles in this workspace.
+            </p>
           </CardContent>
         </Card>
       </div>
