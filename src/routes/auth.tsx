@@ -71,18 +71,6 @@ function AuthPage() {
     navigate({ to: "/dashboard" });
   }
 
-  async function firebaseGoogle() {
-    setBusy(true);
-    try {
-      const { signInWithFirebaseGoogle } = await import("@/lib/firebase");
-      const user = await signInWithFirebaseGoogle();
-      toast.success(`Firebase: signed in as ${user.email ?? user.uid}`);
-    } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Firebase sign-in failed");
-    } finally {
-      setBusy(false);
-    }
-  }
 
 
   return (
