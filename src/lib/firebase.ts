@@ -19,14 +19,10 @@ export function getFirebaseApp(): Promise<FirebaseApp> {
   return appPromise;
 }
 
-/** Opens the Firebase Google popup and returns the signed-in Firebase user. */
-export async function signInWithFirebaseGoogle() {
-  const app = await getFirebaseApp();
-  const { getAuth, GoogleAuthProvider, signInWithPopup } = await import("firebase/auth");
-  const auth = getAuth(app);
-  const result = await signInWithPopup(auth, new GoogleAuthProvider());
-  return result.user;
-}
+// Note: authentication is handled by Supabase Auth (Google + email/password),
+// so Firebase is used for analytics only. Adding Firebase Auth here would create
+// a second identity that has no tickets, roles or RLS access.
+
 
 /** Initialises Firebase Analytics when the browser supports it. */
 export async function initFirebaseAnalytics() {
