@@ -138,17 +138,9 @@ function AuthPage() {
             <Button variant="outline" className="w-full" onClick={google}>
               Continue with Google
             </Button>
-            <Button
-              variant="ghost"
-              className="mt-2 w-full"
-              disabled={busy}
-              onClick={firebaseGoogle}
-            >
-              Continue with Google (Firebase)
-            </Button>
             <p className="mt-2 text-xs text-muted-foreground">
-              Firebase sign-in is a separate identity provider — it does not grant access to
-              tickets or roles in this workspace.
+              Google sign-in uses your workspace account, so your tickets, role and permissions
+              carry over.
             </p>
           </CardContent>
         </Card>
